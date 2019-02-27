@@ -1,3 +1,18 @@
+calcurse-datefix
+================
+
+calcurse with very slightly less ill-advised date logic
+
+calcurse maintains its data files as plain text, but uses the
+least-useful date format. This tiny fork remedies that.
+
+Note well that using this fork with an existing data file is an
+Incredibly Bad idea. It does nothing to attempt to convert date formats,
+and you will encounter problems if you don't convert your existing data
+file before running this.
+
+Original README.md continues below.
+
 calcurse
 ========
 
