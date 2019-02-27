@@ -556,8 +556,9 @@ void io_load_app(struct item_filter *filter)
 		 * and appointments.
 		 */
 		if (fscanf(data_file, "%d / %d / %d ",
-			   &start.tm_mon, &start.tm_mday,
-			   &start.tm_year) != 3)
+			   &start.tm_year,
+                           &start.tm_mon,
+                           &start.tm_mday) != 3)
 			io_load_error(path_apts, line,
 				      _("syntax error in the item date"));
 
@@ -579,8 +580,8 @@ void io_load_app(struct item_filter *filter)
 			if (fscanf
 			    (data_file,
 			     " %d : %d -> %d / %d / %d @ %d : %d ",
-			     &start.tm_hour, &start.tm_min, &end.tm_mon,
-			     &end.tm_mday, &end.tm_year, &end.tm_hour,
+			     &start.tm_hour, &start.tm_min, &end.tm_year,
+                             &end.tm_mon, &end.tm_mday, &end.tm_hour,
 			     &end.tm_min) != 7)
 				io_load_error(path_apts, line,
 					      _("syntax error in item time or duration"));
@@ -614,8 +615,8 @@ void io_load_app(struct item_filter *filter)
 			} else if (c == '-' && getc(data_file) == '>') {
 				if (fscanf
 				    (data_file, " %d / %d / %d ",
-				     &until.tm_mon, &until.tm_mday,
-				     &until.tm_year) != 3)
+				     &until.tm_year, &until.tm_mon,
+                                     &until.tm_mday) != 3)
 					io_load_error(path_apts, line,
 						      _("syntax error in item repetition"));
 				c = getc(data_file);
